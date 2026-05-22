@@ -1,0 +1,45 @@
+#file handling
+
+"""open function takes two parameters: filename, and mode.
+4 different modes to read a file: 
+    "r" - Read - Default value. Opens a file for reading, error if the file does not exist
+    "a" - Append - Opens a file for appending, creates the file if it does not exist
+    "w" - Write - Opens a file for writing, creates the file if it does not exist
+    "x" - Create - Creates the specified file, returns an error if the file exists """
+#oepn and create then write to file
+f = open("demofile.txt", "w")
+f.write("Hello! Welcome to demofile.txt This file is for testing purposes.Good Luck! \nhi \nhi")
+f.close()
+#read whole file
+f = open("demofile.txt")
+print(f.read())
+print()
+f.close()
+
+#first line
+f = open("demofile.txt")
+print(f.readline())
+print()
+f.close()
+
+#first 5 chars
+with open("demofile.txt") as f:
+  print(f.read(5))
+  print()
+    
+#loop through line
+with open("demofile.txt") as f:
+    for x in f:
+       print(x)
+
+#add more content
+with open("demofile.txt", "a") as f:
+  f.write("\nNow the file has more content!")
+#open and read
+with open("demofile.txt") as f:
+  print(f.read())
+
+try:
+   f = open("demofile.txt", "x")
+except FileExistsError:
+   ("this file already exists!")
