@@ -100,6 +100,19 @@ def sort_file_alphabetical(filename, newfile):
                 f.write(f"{space}\n")
     #print(fileList)
 
+def sort_each_line_alphabetical(filename, newfile):
+    with open(filename, "r") as input_file, open(newfile, "w") as output_file:
+        for line in input_file:
+            wordslist = line.split()
+            sortedwordlist = sorted(wordslist)
+            #print(sortedwordlist)
+            new_sentence= " ".join(sortedwordlist) + "\n"
+            output_file.write(new_sentence)
+            
+ 
+
+        #for line in file_to_sort:
+
 
 def main():
     # Your program logic goes here
@@ -115,10 +128,11 @@ def main():
     # print()
     # print(read_longest_word("text.txt"))
 
-    line_count("text.txt")
-    word_count("text.txt")
-    write_list_to_file("new_example.txt", color)
-    sort_file_alphabetical("NewPracFile.txt", "new_example2.txt")
+    # line_count("text.txt")
+    # word_count("text.txt")
+    # write_list_to_file("new_example.txt", color)
+    # sort_file_alphabetical("NewPracFile.txt", "new_example2.txt")
+    sort_each_line_alphabetical("demofile2.txt", "new_example3.txt")
 
 if __name__ == "__main__":
     main()
