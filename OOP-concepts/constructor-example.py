@@ -20,8 +20,13 @@ def display_info(self):
         """
         print(f"Car: {self.word}")
 
-    
-if __name__ == "main":
+# This line acts as a gatekeeper. 
+# It determines whether your Python file is 
+# being run directly by you,# or if it is
+# being imported by another file.
+
+
+if __name__ == "main": 
     myCar = car()
     myCar.__init__
     print("Default values after creation:")
