@@ -109,10 +109,6 @@ def sort_each_line_alphabetical(filename, newfile):
             new_sentence= " ".join(sortedwordlist) + "\n"
             output_file.write(new_sentence)
             
- 
-
-        #for line in file_to_sort:
-
 
 def main():
     # Your program logic goes here
