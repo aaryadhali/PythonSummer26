@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        /* Modern, clean layout styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .new_user-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 350px;
+        }
+        h2 {
+            margin-bottom: 15px;
+            text-align: center;
+            color: #333333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666666;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="new_user-container">
+    <h2>Register</h2>
+    <!-- Update the action attribute to your backend authentication URL -->
+    <form action="/register" method="POST">
+        
+        <!-- Username Field (or name)-->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter Username" required>
+        </div>
+
+        <!-- name Field (or name)-->
+        <div class="form-group">
+            <label for="firstname">Name</label>
+            <input type="text" id="name" name="name" placeholder="First Name" required>
+        </div>
+
+        <!-- lastname Field (or name)-->
+        <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+        </div>
+
+        <!-- email Field (or name)-->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Enter Email" required>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Create New User</button>
+        
+    </form>
+</div>
+
+</body>
+</html>
