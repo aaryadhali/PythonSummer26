@@ -1,0 +1,1 @@
+"corvette", 2021, "blue"
