@@ -1,6 +1,8 @@
 import os
 from flask import Flask, request, render_template, jsonify, redirect
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import select, case
+from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,14 +33,47 @@ class UserModel(db.Model):
     password = db.Column(db.String(80), unique = True, nullable = False)
 
     def __repr__(self):
-        return f"User(name = {self.fname} {self.lname}, email = {self.email})"
+        return f"User(name = {self.first_name} {self.last_name}, email = {self.email})"
 
 #login 
-@app.route('/', methods = ["GET"])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     return render_template("index.html")
-@app.route('/login_endpoint')
+
+@app.route('/login-endpoint', methods=['GET', 'POST'])
 def login_info():
+    if request.method == 'POST':
+        username   = request.form.get("username")
+        password    = request.form.get("password")
+
+        stmt = select(UserModel).where(UserModel.email == username)
+        user = db.session.execute(stmt).scalar_one_or_none()
+        print(username)
+        print(stmt)
+        print(user)
+
+        if user and user.password == password:
+            print(user)
+            return f"loggin in successfully! User info: {user}"
+        elif user and user.password != password:
+            #create alert : try again or say password is wrong
+            #pass
+            return render_template('index.html', error="Invalid password. Please try again.")
+
+        elif user == None:
+            return render_template(
+                'index.html', 
+                error_title = "Authentication Failed", 
+                error_msg   = "The username or password you entered is incorrect. Please register or try again."
+                )
+            """<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  This is an alert box.
+</div>"""
+        return "invalid"
+        
+    return "Please submit a POST request to log in."
+
     
 #create a user
 @app.route('/add_data')

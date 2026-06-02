@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .login-container {
             background-color: #ffffff;
             padding: 30px;
@@ -23,19 +25,23 @@
             width: 100%;
             max-width: 350px;
         }
+
         h2 {
             margin-bottom: 20px;
             text-align: center;
             color: #333333;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
             color: #666666;
         }
+
         input[type="text"],
         input[type="password"] {
             width: 100%;
@@ -44,7 +50,8 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-                /* New signup link styles */
+
+        /* New signup link styles */
         .signup-link {
             display: block;
             text-align: center;
@@ -53,6 +60,7 @@
             color: #007bff;
             text-decoration: none;
         }
+
         button {
             width: 100%;
             padding: 10px;
@@ -63,37 +71,101 @@
             font-size: 16px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            /* Red */
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        /* The close button */
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* When moving the mouse over the close button */
+        .closebtn:hover {
+            color: black;
+        }
+
+        .glow {
+            font-size: 80px;
+            color: #fff;
+            text-align: center;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @-webkit-keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<div class="login-container">
-    <h2>Login</h2>
-    <!-- Update the action attribute to your backend authentication URL -->
-    <form action="/login-endpoint" method="POST">
-        
-        <!-- Username Field -->
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter Username" required>
+    <div class="login-container">
+        {% if error %}
+        <!-- <div class="alert" style="background-color: #f44336; color: white; padding: 15px; margin-bottom: 15px;">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';"
+                style="float:right; cursor:pointer; font-size:22px;">&times;</span>
+            <strong>Error:</strong> {{ error }}
+        </div> -->
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Error:</strong> {{ error }}
         </div>
 
-        <!-- Password Field -->
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+        {% endif %}
+        {% if error_msg %}
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>{{ error_title }}</strong>
+            <p style="margin: 5px 0 0 0; font-size: 14px;">{{ error_msg }}</p>
         </div>
+        {% endif %}
+        <h2>Login</h2>
+        <!-- Update the action attribute to your backend authentication URL -->
+        <form action="/login-endpoint" method="POST">
 
-        <!-- Submit Button -->
-        <button type="submit">Sign In</button>
-        
-        <a href="/create_data" class="signup-link">Don't have an account?</a>
-        
-    </form>
-</div>
+            <!-- Username Field -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Sign In</button>
+
+            <a href="/create_data" class="signup-link">Don't have an account?</a>
+
+        </form>
+    </div>
 
 </body>
+
 </html>
