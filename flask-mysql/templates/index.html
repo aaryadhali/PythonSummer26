@@ -108,7 +108,7 @@
             animation: glow 1s ease-in-out infinite alternate;
         }
 
-        @-webkit-keyframes glow {
+        /*<---@-webkit-keyframes glow {
             from {
                 text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
             }
@@ -116,7 +116,7 @@
             to {
                 text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
             }
-        }
+        }--->*/
     </style>
 </head>
 
@@ -124,11 +124,11 @@
 
     <div class="login-container">
         {% if error %}
-        <!-- <div class="alert" style="background-color: #f44336; color: white; padding: 15px; margin-bottom: 15px;">
+        /* <!-- <div class="alert" style="background-color: #f44336; color: white; padding: 15px; margin-bottom: 15px;">
             <span class="closebtn" onclick="this.parentElement.style.display='none';"
                 style="float:right; cursor:pointer; font-size:22px;">&times;</span>
             <strong>Error:</strong> {{ error }}
-        </div> -->
+        </div> --> */
         <div class="alert">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <strong>Error:</strong> {{ error }}
