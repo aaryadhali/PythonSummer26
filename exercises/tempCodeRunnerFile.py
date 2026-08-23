@@ -1,2 +1,3 @@
-            # print(dict_2.get(key))
-            # print(value)
+     download_file("Photo_1")
+        download_file("Photo_2")
+        download_file("Photo_3")
